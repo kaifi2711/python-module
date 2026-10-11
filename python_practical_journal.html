@@ -1,0 +1,1053 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Python Programming Practical Journal</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <!-- Google Fonts: Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Prism.js CSS for Syntax Highlighting (Tomorrow Night theme) -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" rel="stylesheet" />
+    
+    <style>
+        /* Custom Scrollbar for better aesthetics */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 4px;
+        }
+        .dark ::-webkit-scrollbar-thumb {
+            background: #475569;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #94a3b8;
+        }
+        .dark ::-webkit-scrollbar-thumb:hover {
+            background: #64748b;
+        }
+
+        /* Prism override for border radius and padding */
+        pre[class*="language-"] {
+            border-radius: 0.5rem;
+            padding: 1.25rem;
+            margin: 0;
+            background: #1e1e1e !important; /* Uniform dark background for code */
+            font-size: 0.9rem;
+        }
+        
+        /* Smooth transitions */
+        body {
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+        
+        /* Sidebar active link styling */
+        .nav-link.active {
+            background-color: #e0f2fe;
+            color: #0284c7;
+            font-weight: 600;
+            border-left: 4px solid #0284c7;
+        }
+        .dark .nav-link.active {
+            background-color: #0c4a6e;
+            color: #38bdf8;
+            border-left: 4px solid #38bdf8;
+        }
+    </style>
+</head>
+
+<body class="bg-gray-50 text-gray-900 dark:bg-gray-900 dark:text-gray-100 font-sans antialiased selection:bg-blue-200 selection:text-blue-900 dark:selection:bg-blue-900 dark:selection:text-blue-100">
+
+    <!-- Mobile Header -->
+    <div class="lg:hidden sticky top-0 z-50 bg-white dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700 p-4 flex justify-between items-center shadow-sm">
+        <h1 class="text-lg font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-cyan-600">Python Journal</h1>
+        <div class="flex items-center gap-4">
+            <button id="mobileThemeToggle" class="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors" aria-label="Toggle Dark Mode">
+                <i class="fas fa-moon dark:hidden text-gray-600"></i>
+                <i class="fas fa-sun hidden dark:block text-yellow-400"></i>
+            </button>
+            <button id="mobileMenuBtn" class="p-2 text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg transition-colors">
+                <i class="fas fa-bars text-xl"></i>
+            </button>
+        </div>
+    </div>
+
+    <div class="flex h-screen overflow-hidden">
+        
+        <!-- Sidebar Navigation -->
+        <aside id="sidebar" class="w-64 flex-shrink-0 bg-white dark:bg-gray-800 border-r border-gray-200 dark:border-gray-700 flex flex-col transition-transform duration-300 absolute lg:relative z-40 h-full -translate-x-full lg:translate-x-0 shadow-2xl lg:shadow-none">
+            <div class="p-6 border-b border-gray-200 dark:border-gray-700 hidden lg:flex justify-between items-center">
+                <h1 class="text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-cyan-600">Python Journal</h1>
+                <button id="desktopThemeToggle" class="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors" aria-label="Toggle Dark Mode">
+                    <i class="fas fa-moon dark:hidden text-gray-600"></i>
+                    <i class="fas fa-sun hidden dark:block text-yellow-400"></i>
+                </button>
+            </div>
+            
+            <div class="flex-1 overflow-y-auto py-4 custom-scrollbar">
+                <div class="px-4 mb-2 text-xs font-semibold text-gray-400 uppercase tracking-wider">Module 1</div>
+                <nav class="space-y-1 mb-6">
+                    <a href="#m1-p1" class="nav-link block px-6 py-2 text-sm text-gray-600 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors border-l-4 border-transparent">Practical 1</a>
+                    <a href="#m1-p2" class="nav-link block px-6 py-2 text-sm text-gray-600 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors border-l-4 border-transparent">Practical 2</a>
+                    <a href="#m1-p3" class="nav-link block px-6 py-2 text-sm text-gray-600 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors border-l-4 border-transparent">Practical 3</a>
+                    <a href="#m1-p4" class="nav-link block px-6 py-2 text-sm text-gray-600 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors border-l-4 border-transparent">Practical 4</a>
+                    <a href="#m1-p5" class="nav-link block px-6 py-2 text-sm text-gray-600 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors border-l-4 border-transparent">Practical 5</a>
+                    <a href="#m1-p6" class="nav-link block px-6 py-2 text-sm text-gray-600 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors border-l-4 border-transparent">Practical 6</a>
+                    <a href="#m1-p7" class="nav-link block px-6 py-2 text-sm text-gray-600 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors border-l-4 border-transparent">Practical 7</a>
+                    <a href="#m1-p8" class="nav-link block px-6 py-2 text-sm text-gray-600 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors border-l-4 border-transparent">Practical 8</a>
+                    <a href="#m1-p9" class="nav-link block px-6 py-2 text-sm text-gray-600 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors border-l-4 border-transparent">Practical 9</a>
+                    <a href="#m1-p10" class="nav-link block px-6 py-2 text-sm text-gray-600 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors border-l-4 border-transparent">Practical 10</a>
+                </nav>
+
+                <div class="px-4 mb-2 text-xs font-semibold text-gray-400 uppercase tracking-wider">Module 2</div>
+                <nav class="space-y-1">
+                    <a href="#m2-p1" class="nav-link block px-6 py-2 text-sm text-gray-600 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors border-l-4 border-transparent">Practical 1</a>
+                    <a href="#m2-p2" class="nav-link block px-6 py-2 text-sm text-gray-600 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors border-l-4 border-transparent">Practical 2</a>
+                    <a href="#m2-p3" class="nav-link block px-6 py-2 text-sm text-gray-600 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors border-l-4 border-transparent">Practical 3</a>
+                    <a href="#m2-p4" class="nav-link block px-6 py-2 text-sm text-gray-600 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors border-l-4 border-transparent">Practical 4</a>
+                    <a href="#m2-p5" class="nav-link block px-6 py-2 text-sm text-gray-600 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors border-l-4 border-transparent">Practical 5</a>
+                    <a href="#m2-p6" class="nav-link block px-6 py-2 text-sm text-gray-600 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors border-l-4 border-transparent">Practical 6</a>
+                    <a href="#m2-p7" class="nav-link block px-6 py-2 text-sm text-gray-600 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors border-l-4 border-transparent">Practical 7</a>
+                    <a href="#m2-p8" class="nav-link block px-6 py-2 text-sm text-gray-600 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors border-l-4 border-transparent">Practical 8</a>
+                    <a href="#m2-p9" class="nav-link block px-6 py-2 text-sm text-gray-600 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors border-l-4 border-transparent">Practical 9</a>
+                    <a href="#m2-p10" class="nav-link block px-6 py-2 text-sm text-gray-600 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors border-l-4 border-transparent">Practical 10</a>
+                </nav>
+            </div>
+        </aside>
+
+        <!-- Overlay for mobile sidebar -->
+        <div id="sidebarOverlay" class="fixed inset-0 bg-black bg-opacity-50 z-30 hidden lg:hidden backdrop-blur-sm transition-opacity"></div>
+
+        <main class="flex-1 overflow-y-auto p-4 lg:p-10 custom-scrollbar scroll-smooth">
+            <div class="max-w-4xl mx-auto">
+                
+                <!-- Page Header -->
+                <div class="mb-12 text-center">
+                    <h2 class="text-3xl lg:text-4xl font-extrabold text-gray-900 dark:text-white mb-4">Python Programming Practical Journal</h2>
+                    <p class="text-gray-500 dark:text-gray-400">A comprehensive collection of Python practical exercises and solutions.</p>
+                </div>
+
+                <!-- MODULE 1 SECTION -->
+                <div class="mb-16">
+                    <div class="flex items-center gap-4 mb-8">
+                        <div class="h-px bg-gray-300 dark:bg-gray-700 flex-1"></div>
+                        <h2 class="text-2xl font-bold text-gray-800 dark:text-gray-200 uppercase tracking-widest">Module 1</h2>
+                        <div class="h-px bg-gray-300 dark:bg-gray-700 flex-1"></div>
+                    </div>
+
+                    <!-- M1 P1 -->
+                    <section id="m1-p1" class="mb-10 bg-white dark:bg-gray-800 rounded-2xl shadow-sm border border-gray-200 dark:border-gray-700 overflow-hidden transition-all duration-300 hover:shadow-md">
+                        <div class="p-6 lg:p-8">
+                            <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-4 flex items-center gap-2">
+                                <span class="bg-blue-100 text-blue-700 dark:bg-blue-900 dark:text-blue-300 px-3 py-1 rounded-full text-sm">Prac 1</span>
+                                Calculate Total & Average Marks
+                            </h3>
+                            
+                            <div class="mb-6">
+                                <h4 class="text-sm font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider mb-2">Objective</h4>
+                                <p class="text-gray-700 dark:text-gray-300">Write a Python program that: Accepts a student's name, roll number, and marks in three subjects using the input() function. Calculates the total and average marks. Displays the result using formatted output statements.</p>
+                            </div>
+
+                            <div class="mb-6 relative group">
+                                <div class="flex justify-between items-center mb-2">
+                                    <h4 class="text-sm font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider">Source Code</h4>
+                                    <button class="copy-btn text-xs bg-gray-200 hover:bg-gray-300 dark:bg-gray-700 dark:hover:bg-gray-600 text-gray-700 dark:text-gray-300 px-3 py-1.5 rounded-md transition-colors flex items-center gap-1">
+                                        <i class="far fa-copy"></i> <span>Copy</span>
+                                    </button>
+                                </div>
+<pre><code class="language-python"># Input student details
+name = input("Enter Student Name: ")
+roll_no = input("Enter Roll Number: ")
+mark1 = float(input("Enter marks of Subject 1: "))
+mark2 = float(input("Enter marks of Subject 2: "))
+mark3 = float(input("Enter marks of Subject 3: "))
+
+# Calculate total and average
+total = mark1 + mark2 + mark3
+average = total/3
+
+# Display result
+print("\n--- Student Result ---")
+print("Name:", name)
+print("Roll Number:", roll_no)
+print("Total Marks:", total)
+print("Average Marks:", average)</code></pre>
+                            </div>
+
+                            <div>
+                                <h4 class="text-sm font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider mb-2">Output</h4>
+                                <div class="bg-gray-100 dark:bg-gray-900 p-4 rounded-lg text-sm text-gray-800 dark:text-gray-300 font-mono whitespace-pre-wrap">Enter Student Name: Rahul
+Enter Roll Number: 101
+Enter marks of Subject 1: 85
+Enter marks of Subject 2: 90
+Enter marks of Subject 3: 80
+
+--- Student Result ---
+Name: Rahul
+Roll Number: 101
+Total Marks: 255.0
+Average Marks: 85.0</div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- M1 P2 -->
+                    <section id="m1-p2" class="mb-10 bg-white dark:bg-gray-800 rounded-2xl shadow-sm border border-gray-200 dark:border-gray-700 overflow-hidden transition-all duration-300 hover:shadow-md">
+                        <div class="p-6 lg:p-8">
+                            <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-4 flex items-center gap-2">
+                                <span class="bg-blue-100 text-blue-700 dark:bg-blue-900 dark:text-blue-300 px-3 py-1 rounded-full text-sm">Prac 2</span>
+                                Assign Grades based on Percentage
+                            </h3>
+                            
+                            <div class="mb-6">
+                                <h4 class="text-sm font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider mb-2">Objective</h4>
+                                <p class="text-gray-700 dark:text-gray-300">Write a program that: Accepts a student's percentage. Uses if, elif, and else statements to assign grades: A: 90 and above, B: 75-89, C: 60-74, D: 40-59, F: Below.</p>
+                            </div>
+
+                            <div class="mb-6 relative group">
+                                <div class="flex justify-between items-center mb-2">
+                                    <h4 class="text-sm font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider">Source Code</h4>
+                                    <button class="copy-btn text-xs bg-gray-200 hover:bg-gray-300 dark:bg-gray-700 dark:hover:bg-gray-600 text-gray-700 dark:text-gray-300 px-3 py-1.5 rounded-md transition-colors flex items-center gap-1">
+                                        <i class="far fa-copy"></i> <span>Copy</span>
+                                    </button>
+                                </div>
+<pre><code class="language-python">percentage = float(input("Enter Student Percentage: "))
+if percentage >= 90:
+    grade = "A"
+elif percentage >= 75:
+    grade = "B"
+elif percentage >= 60:
+    grade = "C"
+elif percentage >= 40:
+    grade = "D"
+else:
+    grade = "F"
+print("Grade:", grade)</code></pre>
+                            </div>
+
+                            <div>
+                                <h4 class="text-sm font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider mb-2">Output</h4>
+                                <div class="bg-gray-100 dark:bg-gray-900 p-4 rounded-lg text-sm text-gray-800 dark:text-gray-300 font-mono whitespace-pre-wrap">Enter Student Percentage: 82
+Grade: B</div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- M1 P3 -->
+                    <section id="m1-p3" class="mb-10 bg-white dark:bg-gray-800 rounded-2xl shadow-sm border border-gray-200 dark:border-gray-700 overflow-hidden transition-all duration-300 hover:shadow-md">
+                        <div class="p-6 lg:p-8">
+                            <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-4 flex items-center gap-2">
+                                <span class="bg-blue-100 text-blue-700 dark:bg-blue-900 dark:text-blue-300 px-3 py-1 rounded-full text-sm">Prac 3</span>
+                                Multiplication Table
+                            </h3>
+                            
+                            <div class="mb-6">
+                                <h4 class="text-sm font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider mb-2">Objective</h4>
+                                <p class="text-gray-700 dark:text-gray-300">Write a Python program that: Takes a number as int. Prints its multiplication table from 1 to 10 using a for loop.</p>
+                            </div>
+
+                            <div class="mb-6 relative group">
+                                <div class="flex justify-between items-center mb-2">
+                                    <h4 class="text-sm font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider">Source Code</h4>
+                                    <button class="copy-btn text-xs bg-gray-200 hover:bg-gray-300 dark:bg-gray-700 dark:hover:bg-gray-600 text-gray-700 dark:text-gray-300 px-3 py-1.5 rounded-md transition-colors flex items-center gap-1">
+                                        <i class="far fa-copy"></i> <span>Copy</span>
+                                    </button>
+                                </div>
+<pre><code class="language-python">num = int(input("Enter a number: "))
+for i in range(1, 11):
+    print(num, "x", i, "=", num * i)</code></pre>
+                            </div>
+
+                            <div>
+                                <h4 class="text-sm font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider mb-2">Output</h4>
+                                <div class="bg-gray-100 dark:bg-gray-900 p-4 rounded-lg text-sm text-gray-800 dark:text-gray-300 font-mono whitespace-pre-wrap">Enter a number: 5
+5 x 1 = 5
+5 x 2 = 10
+5 x 3 = 15
+5 x 4 = 20
+5 x 5 = 25
+5 x 6 = 30
+5 x 7 = 35
+5 x 8 = 40
+5 x 9 = 45
+5 x 10 = 50</div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- M1 P4 -->
+                    <section id="m1-p4" class="mb-10 bg-white dark:bg-gray-800 rounded-2xl shadow-sm border border-gray-200 dark:border-gray-700 overflow-hidden transition-all duration-300 hover:shadow-md">
+                        <div class="p-6 lg:p-8">
+                            <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-4 flex items-center gap-2">
+                                <span class="bg-blue-100 text-blue-700 dark:bg-blue-900 dark:text-blue-300 px-3 py-1 rounded-full text-sm">Prac 4</span>
+                                NumPy: Even and Odd Elements
+                            </h3>
+                            
+                            <div class="mb-6">
+                                <h4 class="text-sm font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider mb-2">Objective</h4>
+                                <p class="text-gray-700 dark:text-gray-300">Write a program using NumPy arrays that: Creates an array of 10 integers. Counts and displays the number of even and odd elements present in the array.</p>
+                            </div>
+
+                            <div class="mb-6 relative group">
+                                <div class="flex justify-between items-center mb-2">
+                                    <h4 class="text-sm font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider">Source Code</h4>
+                                    <button class="copy-btn text-xs bg-gray-200 hover:bg-gray-300 dark:bg-gray-700 dark:hover:bg-gray-600 text-gray-700 dark:text-gray-300 px-3 py-1.5 rounded-md transition-colors flex items-center gap-1">
+                                        <i class="far fa-copy"></i> <span>Copy</span>
+                                    </button>
+                                </div>
+<pre><code class="language-python">import numpy as np
+
+arr = np.array([10, 15, 22, 33, 40, 51, 62, 77, 84, 95])
+even_count = 0
+odd_count = 0
+
+for num in arr:
+    if num % 2 == 0:
+        even_count += 1
+    else:
+        odd_count += 1
+
+print("Array:", arr)
+print("Number of Even Elements =", even_count)
+print("Number of Odd Elements =", odd_count)</code></pre>
+                            </div>
+
+                            <div>
+                                <h4 class="text-sm font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider mb-2">Output</h4>
+                                <div class="bg-gray-100 dark:bg-gray-900 p-4 rounded-lg text-sm text-gray-800 dark:text-gray-300 font-mono whitespace-pre-wrap">Array: [10 15 22 33 40 51 62 77 84 95]
+Number of Even Elements = 5
+Number of Odd Elements = 5</div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- M1 P5 -->
+                    <section id="m1-p5" class="mb-10 bg-white dark:bg-gray-800 rounded-2xl shadow-sm border border-gray-200 dark:border-gray-700 overflow-hidden transition-all duration-300 hover:shadow-md">
+                        <div class="p-6 lg:p-8">
+                            <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-4 flex items-center gap-2">
+                                <span class="bg-blue-100 text-blue-700 dark:bg-blue-900 dark:text-blue-300 px-3 py-1 rounded-full text-sm">Prac 5</span>
+                                NumPy: Arithmetic Operations
+                            </h3>
+                            
+                            <div class="mb-6">
+                                <h4 class="text-sm font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider mb-2">Objective</h4>
+                                <p class="text-gray-700 dark:text-gray-300">Create two NumPy arrays containing five elements each. Perform addition, subtraction, multiplication, and division between the arrays.</p>
+                            </div>
+
+                            <div class="mb-6 relative group">
+                                <div class="flex justify-between items-center mb-2">
+                                    <h4 class="text-sm font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider">Source Code</h4>
+                                    <button class="copy-btn text-xs bg-gray-200 hover:bg-gray-300 dark:bg-gray-700 dark:hover:bg-gray-600 text-gray-700 dark:text-gray-300 px-3 py-1.5 rounded-md transition-colors flex items-center gap-1">
+                                        <i class="far fa-copy"></i> <span>Copy</span>
+                                    </button>
+                                </div>
+<pre><code class="language-python">import numpy as np
+
+arr1 = np.array([10, 20, 30, 40, 50])
+arr2 = np.array([2, 4, 6, 8, 10])
+
+addition = arr1 + arr2
+subtraction = arr1 - arr2
+multiplication = arr1 * arr2
+division = arr1 / arr2
+
+print("Array 1:", arr1)
+print("Array 2:", arr2)
+print("\nAddition:", addition)
+print("Subtraction:", subtraction)
+print("Multiplication:", multiplication)
+print("Division:", division)</code></pre>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- M1 P6 -->
+                    <section id="m1-p6" class="mb-10 bg-white dark:bg-gray-800 rounded-2xl shadow-sm border border-gray-200 dark:border-gray-700 overflow-hidden transition-all duration-300 hover:shadow-md">
+                        <div class="p-6 lg:p-8">
+                            <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-4 flex items-center gap-2">
+                                <span class="bg-blue-100 text-blue-700 dark:bg-blue-900 dark:text-blue-300 px-3 py-1 rounded-full text-sm">Prac 6</span>
+                                Sentence Analysis
+                            </h3>
+                            
+                            <div class="mb-6">
+                                <h4 class="text-sm font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider mb-2">Objective</h4>
+                                <p class="text-gray-700 dark:text-gray-300">Write a Python program that: Accepts a sentence from the user. Finds and displays: Total number of characters, Total number of words, Number of vowels.</p>
+                            </div>
+
+                            <div class="mb-6 relative group">
+                                <div class="flex justify-between items-center mb-2">
+                                    <h4 class="text-sm font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider">Source Code</h4>
+                                    <button class="copy-btn text-xs bg-gray-200 hover:bg-gray-300 dark:bg-gray-700 dark:hover:bg-gray-600 text-gray-700 dark:text-gray-300 px-3 py-1.5 rounded-md transition-colors flex items-center gap-1">
+                                        <i class="far fa-copy"></i> <span>Copy</span>
+                                    </button>
+                                </div>
+<pre><code class="language-python">sentence = input("Enter a sentence: ")
+characters = len(sentence)
+words = len(sentence.split())
+vowels = 0
+
+for ch in sentence.lower():
+    if ch in "aeiou":
+        vowels += 1
+
+print("Total Characters =", characters)
+print("Total Words =", words)
+print("Total Vowels =", vowels)</code></pre>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- M1 P7 -->
+                    <section id="m1-p7" class="mb-10 bg-white dark:bg-gray-800 rounded-2xl shadow-sm border border-gray-200 dark:border-gray-700 overflow-hidden transition-all duration-300 hover:shadow-md">
+                        <div class="p-6 lg:p-8">
+                            <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-4 flex items-center gap-2">
+                                <span class="bg-blue-100 text-blue-700 dark:bg-blue-900 dark:text-blue-300 px-3 py-1 rounded-full text-sm">Prac 7</span>
+                                Factorial Using Recursion
+                            </h3>
+                            
+                            <div class="mb-6">
+                                <h4 class="text-sm font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider mb-2">Objective</h4>
+                                <p class="text-gray-700 dark:text-gray-300">Write a recursive function to: Calculate the factorial of a given number.</p>
+                            </div>
+
+                            <div class="mb-6 relative group">
+                                <div class="flex justify-between items-center mb-2">
+                                    <h4 class="text-sm font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider">Source Code</h4>
+                                    <button class="copy-btn text-xs bg-gray-200 hover:bg-gray-300 dark:bg-gray-700 dark:hover:bg-gray-600 text-gray-700 dark:text-gray-300 px-3 py-1.5 rounded-md transition-colors flex items-center gap-1">
+                                        <i class="far fa-copy"></i> <span>Copy</span>
+                                    </button>
+                                </div>
+<pre><code class="language-python">def factorial(n):
+    if n == 0 or n == 1:
+        return 1
+    else:
+        return n * factorial(n - 1)
+
+num = int(input("Enter a number: "))
+result = factorial(num)
+print("Factorial of", num, "is", result)</code></pre>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- M1 P8 -->
+                    <section id="m1-p8" class="mb-10 bg-white dark:bg-gray-800 rounded-2xl shadow-sm border border-gray-200 dark:border-gray-700 overflow-hidden transition-all duration-300 hover:shadow-md">
+                        <div class="p-6 lg:p-8">
+                            <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-4 flex items-center gap-2">
+                                <span class="bg-blue-100 text-blue-700 dark:bg-blue-900 dark:text-blue-300 px-3 py-1 rounded-full text-sm">Prac 8</span>
+                                Dictionary: Search Employee
+                            </h3>
+                            
+                            <div class="mb-6">
+                                <h4 class="text-sm font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider mb-2">Objective</h4>
+                                <p class="text-gray-700 dark:text-gray-300">Write a program that: Creates a dictionary containing employee IDs and names. Allows the user to search for an employee using the employee ID.</p>
+                            </div>
+
+                            <div class="mb-6 relative group">
+                                <div class="flex justify-between items-center mb-2">
+                                    <h4 class="text-sm font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider">Source Code</h4>
+                                    <button class="copy-btn text-xs bg-gray-200 hover:bg-gray-300 dark:bg-gray-700 dark:hover:bg-gray-600 text-gray-700 dark:text-gray-300 px-3 py-1.5 rounded-md transition-colors flex items-center gap-1">
+                                        <i class="far fa-copy"></i> <span>Copy</span>
+                                    </button>
+                                </div>
+<pre><code class="language-python">employees = {
+    101: "Rahul", 102: "Priya", 103: "Amit", 104: "Sneha", 105: "Karan"
+}
+
+emp_id = int(input("Enter Employee ID: "))
+
+if emp_id in employees:
+    print("Employee ID:", emp_id)
+    print("Employee Name:", employees[emp_id])
+else:
+    print("Employee not found.")</code></pre>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- M1 P9 -->
+                    <section id="m1-p9" class="mb-10 bg-white dark:bg-gray-800 rounded-2xl shadow-sm border border-gray-200 dark:border-gray-700 overflow-hidden transition-all duration-300 hover:shadow-md">
+                        <div class="p-6 lg:p-8">
+                            <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-4 flex items-center gap-2">
+                                <span class="bg-blue-100 text-blue-700 dark:bg-blue-900 dark:text-blue-300 px-3 py-1 rounded-full text-sm">Prac 9</span>
+                                Sorting List of Tuples with Lambda
+                            </h3>
+                            
+                            <div class="mb-6">
+                                <h4 class="text-sm font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider mb-2">Objective</h4>
+                                <p class="text-gray-700 dark:text-gray-300">Write a Python program that: Creates a list of tuples containing student names and marks. Uses a lambda function to sort the list based on marks in descending order.</p>
+                            </div>
+
+                            <div class="mb-6 relative group">
+                                <div class="flex justify-between items-center mb-2">
+                                    <h4 class="text-sm font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider">Source Code</h4>
+                                    <button class="copy-btn text-xs bg-gray-200 hover:bg-gray-300 dark:bg-gray-700 dark:hover:bg-gray-600 text-gray-700 dark:text-gray-300 px-3 py-1.5 rounded-md transition-colors flex items-center gap-1">
+                                        <i class="far fa-copy"></i> <span>Copy</span>
+                                    </button>
+                                </div>
+<pre><code class="language-python">students = [
+    ("Rahul", 85), ("Priya", 92), ("Amit", 78), ("Sneha", 88), ("Karan", 95)
+]
+
+sorted_students = sorted(students, key=lambda x: x[1], reverse=True)
+
+print("Students sorted by marks (highest to lowest):")
+for student in sorted_students:
+    print(student)</code></pre>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- M1 P10 -->
+                    <section id="m1-p10" class="mb-10 bg-white dark:bg-gray-800 rounded-2xl shadow-sm border border-gray-200 dark:border-gray-700 overflow-hidden transition-all duration-300 hover:shadow-md">
+                        <div class="p-6 lg:p-8">
+                            <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-4 flex items-center gap-2">
+                                <span class="bg-blue-100 text-blue-700 dark:bg-blue-900 dark:text-blue-300 px-3 py-1 rounded-full text-sm">Prac 10</span>
+                                User-Defined Modules
+                            </h3>
+                            
+                            <div class="mb-6">
+                                <h4 class="text-sm font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider mb-2">Objective</h4>
+                                <p class="text-gray-700 dark:text-gray-300">Create a user-defined module named calculator.py containing functions for Arithmetic operations.</p>
+                            </div>
+
+                            <div class="mb-6 relative group">
+                                <div class="flex justify-between items-center mb-2">
+                                    <h4 class="text-sm font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider">Source Code</h4>
+                                    <button class="copy-btn text-xs bg-gray-200 hover:bg-gray-300 dark:bg-gray-700 dark:hover:bg-gray-600 text-gray-700 dark:text-gray-300 px-3 py-1.5 rounded-md transition-colors flex items-center gap-1">
+                                        <i class="far fa-copy"></i> <span>Copy</span>
+                                    </button>
+                                </div>
+<pre><code class="language-python"># calculator.py
+def add(a, b): return a + b
+def subtract(a, b): return a - b
+def multiply(a, b): return a * b
+def divide(a, b): return a / b if b != 0 else "Error"
+
+# main.py
+import calculator
+a = float(input("Enter first number: "))
+b = float(input("Enter second number: "))
+print("Addition =", calculator.add(a, b))</code></pre>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+
+                <!-- MODULE 2 SECTION -->
+                <div class="mb-16">
+                    <div class="flex items-center gap-4 mb-8">
+                        <div class="h-px bg-gray-300 dark:bg-gray-700 flex-1"></div>
+                        <h2 class="text-2xl font-bold text-gray-800 dark:text-gray-200 uppercase tracking-widest">Module 2</h2>
+                        <div class="h-px bg-gray-300 dark:bg-gray-700 flex-1"></div>
+                    </div>
+
+                    <!-- M2 P1 -->
+                    <section id="m2-p1" class="mb-10 bg-white dark:bg-gray-800 rounded-2xl shadow-sm border border-gray-200 dark:border-gray-700 overflow-hidden transition-all duration-300 hover:shadow-md">
+                        <div class="p-6 lg:p-8">
+                            <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-4 flex items-center gap-2">
+                                <span class="bg-indigo-100 text-indigo-700 dark:bg-indigo-900 dark:text-indigo-300 px-3 py-1 rounded-full text-sm">Prac 1</span>
+                                List Operations
+                            </h3>
+                            
+                            <div class="mb-6">
+                                <h4 class="text-sm font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider mb-2">Objective</h4>
+                                <p class="text-gray-700 dark:text-gray-300">Write a Python program to create a list of numbers and perform operations.</p>
+                            </div>
+
+                            <div class="mb-6 relative group">
+                                <div class="flex justify-between items-center mb-2">
+                                    <h4 class="text-sm font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider">Source Code</h4>
+                                    <button class="copy-btn text-xs bg-gray-200 hover:bg-gray-300 dark:bg-gray-700 dark:hover:bg-gray-600 text-gray-700 dark:text-gray-300 px-3 py-1.5 rounded-md transition-colors flex items-center gap-1">
+                                        <i class="far fa-copy"></i> <span>Copy</span>
+                                    </button>
+                                </div>
+<pre><code class="language-python">numbers = [10, 20, 30, 40, 50, 60, 70]
+numbers.append(80)
+numbers.remove(30)
+
+print("First five elements:", numbers[:5])
+print("List in reverse order:", numbers[::-1])</code></pre>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- M2 P2 -->
+                    <section id="m2-p2" class="mb-10 bg-white dark:bg-gray-800 rounded-2xl shadow-sm border border-gray-200 dark:border-gray-700 overflow-hidden transition-all duration-300 hover:shadow-md">
+                        <div class="p-6 lg:p-8">
+                            <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-4 flex items-center gap-2">
+                                <span class="bg-indigo-100 text-indigo-700 dark:bg-indigo-900 dark:text-indigo-300 px-3 py-1 rounded-full text-sm">Prac 2</span>
+                                Nested Lists for Student Data
+                            </h3>
+                            
+                            <div class="mb-6">
+                                <h4 class="text-sm font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider mb-2">Objective</h4>
+                                <p class="text-gray-700 dark:text-gray-300">Write a Python program to store details of 5 students (Name and Marks) using a nested list and display the marks.</p>
+                            </div>
+
+                            <div class="mb-6 relative group">
+                                <div class="flex justify-between items-center mb-2">
+                                    <h4 class="text-sm font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider">Source Code</h4>
+                                    <button class="copy-btn text-xs bg-gray-200 hover:bg-gray-300 dark:bg-gray-700 dark:hover:bg-gray-600 text-gray-700 dark:text-gray-300 px-3 py-1.5 rounded-md transition-colors flex items-center gap-1">
+                                        <i class="far fa-copy"></i> <span>Copy</span>
+                                    </button>
+                                </div>
+<pre><code class="language-python">students = [["Amit", 85], ["Priya", 90], ["Rahul", 78], ["Sneha", 88], ["Rohan", 92]]
+
+for student in students:
+    print("Name:", student[0], "- Marks:", student[1])</code></pre>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- M2 P3 -->
+                    <section id="m2-p3" class="mb-10 bg-white dark:bg-gray-800 rounded-2xl shadow-sm border border-gray-200 dark:border-gray-700 overflow-hidden transition-all duration-300 hover:shadow-md">
+                        <div class="p-6 lg:p-8">
+                            <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-4 flex items-center gap-2">
+                                <span class="bg-indigo-100 text-indigo-700 dark:bg-indigo-900 dark:text-indigo-300 px-3 py-1 rounded-full text-sm">Prac 3</span>
+                                Tuple Operations
+                            </h3>
+                            
+                            <div class="mb-6">
+                                <h4 class="text-sm font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider mb-2">Objective</h4>
+                                <p class="text-gray-700 dark:text-gray-300">Tuple operations (length, max, min, sum).</p>
+                            </div>
+
+                            <div class="mb-6 relative group">
+                                <div class="flex justify-between items-center mb-2">
+                                    <h4 class="text-sm font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider">Source Code</h4>
+                                    <button class="copy-btn text-xs bg-gray-200 hover:bg-gray-300 dark:bg-gray-700 dark:hover:bg-gray-600 text-gray-700 dark:text-gray-300 px-3 py-1.5 rounded-md transition-colors flex items-center gap-1">
+                                        <i class="far fa-copy"></i> <span>Copy</span>
+                                    </button>
+                                </div>
+<pre><code class="language-python">numbers = (10, 20, 30, 40, 50)
+
+print("Length of tuple:", len(numbers))
+print("Maximum value:", max(numbers))
+print("Minimum value:", min(numbers))
+print("Sum of elements:", sum(numbers))</code></pre>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- M2 P4 -->
+                    <section id="m2-p4" class="mb-10 bg-white dark:bg-gray-800 rounded-2xl shadow-sm border border-gray-200 dark:border-gray-700 overflow-hidden transition-all duration-300 hover:shadow-md">
+                        <div class="p-6 lg:p-8">
+                            <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-4 flex items-center gap-2">
+                                <span class="bg-indigo-100 text-indigo-700 dark:bg-indigo-900 dark:text-indigo-300 px-3 py-1 rounded-full text-sm">Prac 4</span>
+                                Dictionary Search by Roll Number
+                            </h3>
+                            
+                            <div class="mb-6">
+                                <h4 class="text-sm font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider mb-2">Objective</h4>
+                                <p class="text-gray-700 dark:text-gray-300">Dictionary search by roll number.</p>
+                            </div>
+
+                            <div class="mb-6 relative group">
+                                <div class="flex justify-between items-center mb-2">
+                                    <h4 class="text-sm font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider">Source Code</h4>
+                                    <button class="copy-btn text-xs bg-gray-200 hover:bg-gray-300 dark:bg-gray-700 dark:hover:bg-gray-600 text-gray-700 dark:text-gray-300 px-3 py-1.5 rounded-md transition-colors flex items-center gap-1">
+                                        <i class="far fa-copy"></i> <span>Copy</span>
+                                    </button>
+                                </div>
+<pre><code class="language-python">students = {101: "Amit", 102: "Priya", 103: "Rahul", 104: "Sneha", 105: "Rohan"}
+
+roll_no = int(input("Enter Roll Number to search: "))
+
+if roll_no in students:
+    print("Student Name:", students[roll_no])
+else:
+    print("Student not found.")</code></pre>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- M2 P5 -->
+                    <section id="m2-p5" class="mb-10 bg-white dark:bg-gray-800 rounded-2xl shadow-sm border border-gray-200 dark:border-gray-700 overflow-hidden transition-all duration-300 hover:shadow-md">
+                        <div class="p-6 lg:p-8">
+                            <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-4 flex items-center gap-2">
+                                <span class="bg-indigo-100 text-indigo-700 dark:bg-indigo-900 dark:text-indigo-300 px-3 py-1 rounded-full text-sm">Prac 5</span>
+                                File Handling: Write and Read
+                            </h3>
+                            
+                            <div class="mb-6">
+                                <h4 class="text-sm font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider mb-2">Objective</h4>
+                                <p class="text-gray-700 dark:text-gray-300">Write multiple lines to a text file and read it.</p>
+                            </div>
+
+                            <div class="mb-6 relative group">
+                                <div class="flex justify-between items-center mb-2">
+                                    <h4 class="text-sm font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider">Source Code</h4>
+                                    <button class="copy-btn text-xs bg-gray-200 hover:bg-gray-300 dark:bg-gray-700 dark:hover:bg-gray-600 text-gray-700 dark:text-gray-300 px-3 py-1.5 rounded-md transition-colors flex items-center gap-1">
+                                        <i class="far fa-copy"></i> <span>Copy</span>
+                                    </button>
+                                </div>
+<pre><code class="language-python">file = open("students.txt", "w")
+file.write("Amit - 85\nPriya - 90\nRahul - 78\n")
+file.close()
+
+file = open("students.txt", "r")
+print("File Contents:\n", file.read())
+file.close()</code></pre>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- M2 P6 -->
+                    <section id="m2-p6" class="mb-10 bg-white dark:bg-gray-800 rounded-2xl shadow-sm border border-gray-200 dark:border-gray-700 overflow-hidden transition-all duration-300 hover:shadow-md">
+                        <div class="p-6 lg:p-8">
+                            <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-4 flex items-center gap-2">
+                                <span class="bg-indigo-100 text-indigo-700 dark:bg-indigo-900 dark:text-indigo-300 px-3 py-1 rounded-full text-sm">Prac 6</span>
+                                Counting File Content
+                            </h3>
+                            
+                            <div class="mb-6">
+                                <h4 class="text-sm font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider mb-2">Objective</h4>
+                                <p class="text-gray-700 dark:text-gray-300">Count lines, words, and characters in a text file.</p>
+                            </div>
+
+                            <div class="mb-6 relative group">
+                                <div class="flex justify-between items-center mb-2">
+                                    <h4 class="text-sm font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider">Source Code</h4>
+                                    <button class="copy-btn text-xs bg-gray-200 hover:bg-gray-300 dark:bg-gray-700 dark:hover:bg-gray-600 text-gray-700 dark:text-gray-300 px-3 py-1.5 rounded-md transition-colors flex items-center gap-1">
+                                        <i class="far fa-copy"></i> <span>Copy</span>
+                                    </button>
+                                </div>
+<pre><code class="language-python">file = open("students.txt", "r")
+content = file.read()
+
+print("Number of Lines:", len(content.split("\n")))
+print("Number of Words:", len(content.split()))
+print("Number of Characters:", len(content))
+
+file.close()</code></pre>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- M2 P7 -->
+                    <section id="m2-p7" class="mb-10 bg-white dark:bg-gray-800 rounded-2xl shadow-sm border border-gray-200 dark:border-gray-700 overflow-hidden transition-all duration-300 hover:shadow-md">
+                        <div class="p-6 lg:p-8">
+                            <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-4 flex items-center gap-2">
+                                <span class="bg-indigo-100 text-indigo-700 dark:bg-indigo-900 dark:text-indigo-300 px-3 py-1 rounded-full text-sm">Prac 7</span>
+                                File Handling with Pickle
+                            </h3>
+                            
+                            <div class="mb-6">
+                                <h4 class="text-sm font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider mb-2">Objective</h4>
+                                <p class="text-gray-700 dark:text-gray-300">Store and retrieve employee details using Pickle.</p>
+                            </div>
+
+                            <div class="mb-6 relative group">
+                                <div class="flex justify-between items-center mb-2">
+                                    <h4 class="text-sm font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider">Source Code</h4>
+                                    <button class="copy-btn text-xs bg-gray-200 hover:bg-gray-300 dark:bg-gray-700 dark:hover:bg-gray-600 text-gray-700 dark:text-gray-300 px-3 py-1.5 rounded-md transition-colors flex items-center gap-1">
+                                        <i class="far fa-copy"></i> <span>Copy</span>
+                                    </button>
+                                </div>
+<pre><code class="language-python">import pickle
+
+employee = {"Emp_ID": 101, "Name": "Amit", "Salary": 50000}
+
+# Store
+file = open("employee.dat", "wb")
+pickle.dump(employee, file)
+file.close()
+
+# Retrieve
+file = open("employee.dat", "rb")
+data = pickle.load(file)
+print("Name:", data["Name"])
+file.close()</code></pre>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- M2 P8 -->
+                    <section id="m2-p8" class="mb-10 bg-white dark:bg-gray-800 rounded-2xl shadow-sm border border-gray-200 dark:border-gray-700 overflow-hidden transition-all duration-300 hover:shadow-md">
+                        <div class="p-6 lg:p-8">
+                            <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-4 flex items-center gap-2">
+                                <span class="bg-indigo-100 text-indigo-700 dark:bg-indigo-900 dark:text-indigo-300 px-3 py-1 rounded-full text-sm">Prac 8</span>
+                                seek() and tell() Methods
+                            </h3>
+                            
+                            <div class="mb-6">
+                                <h4 class="text-sm font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider mb-2">Objective</h4>
+                                <p class="text-gray-700 dark:text-gray-300">Use seek() and tell() methods.</p>
+                            </div>
+
+                            <div class="mb-6 relative group">
+                                <div class="flex justify-between items-center mb-2">
+                                    <h4 class="text-sm font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider">Source Code</h4>
+                                    <button class="copy-btn text-xs bg-gray-200 hover:bg-gray-300 dark:bg-gray-700 dark:hover:bg-gray-600 text-gray-700 dark:text-gray-300 px-3 py-1.5 rounded-md transition-colors flex items-center gap-1">
+                                        <i class="far fa-copy"></i> <span>Copy</span>
+                                    </button>
+                                </div>
+<pre><code class="language-python">file = open("sample.txt", "w")
+file.write("Python Programming Language")
+file.close()
+
+file = open("sample.txt", "r")
+print("Current Position:", file.tell())
+print("Data:", file.read(6))
+
+file.seek(7)
+print("Data after seek:", file.read(11))
+file.close()</code></pre>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- M2 P9 -->
+                    <section id="m2-p9" class="mb-10 bg-white dark:bg-gray-800 rounded-2xl shadow-sm border border-gray-200 dark:border-gray-700 overflow-hidden transition-all duration-300 hover:shadow-md">
+                        <div class="p-6 lg:p-8">
+                            <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-4 flex items-center gap-2">
+                                <span class="bg-indigo-100 text-indigo-700 dark:bg-indigo-900 dark:text-indigo-300 px-3 py-1 rounded-full text-sm">Prac 9</span>
+                                Regular Expressions for Email Validation
+                            </h3>
+                            
+                            <div class="mb-6">
+                                <h4 class="text-sm font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider mb-2">Objective</h4>
+                                <p class="text-gray-700 dark:text-gray-300">Validate email address using Regular Expressions.</p>
+                            </div>
+
+                            <div class="mb-6 relative group">
+                                <div class="flex justify-between items-center mb-2">
+                                    <h4 class="text-sm font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider">Source Code</h4>
+                                    <button class="copy-btn text-xs bg-gray-200 hover:bg-gray-300 dark:bg-gray-700 dark:hover:bg-gray-600 text-gray-700 dark:text-gray-300 px-3 py-1.5 rounded-md transition-colors flex items-center gap-1">
+                                        <i class="far fa-copy"></i> <span>Copy</span>
+                                    </button>
+                                </div>
+<pre><code class="language-python">import re
+
+email = input("Enter Email Address: ")
+pattern = r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$'
+
+if re.match(pattern, email):
+    print("Valid Email Address")
+else:
+    print("Invalid Email Address")</code></pre>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- M2 P10 -->
+                    <section id="m2-p10" class="mb-10 bg-white dark:bg-gray-800 rounded-2xl shadow-sm border border-gray-200 dark:border-gray-700 overflow-hidden transition-all duration-300 hover:shadow-md">
+                        <div class="p-6 lg:p-8">
+                            <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-4 flex items-center gap-2">
+                                <span class="bg-indigo-100 text-indigo-700 dark:bg-indigo-900 dark:text-indigo-300 px-3 py-1 rounded-full text-sm">Prac 10</span>
+                                Datetime & Calendar Module
+                            </h3>
+                            
+                            <div class="mb-6">
+                                <h4 class="text-sm font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider mb-2">Objective</h4>
+                                <p class="text-gray-700 dark:text-gray-300">Date, time, difference, and calendar.</p>
+                            </div>
+
+                            <div class="mb-6 relative group">
+                                <div class="flex justify-between items-center mb-2">
+                                    <h4 class="text-sm font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider">Source Code</h4>
+                                    <button class="copy-btn text-xs bg-gray-200 hover:bg-gray-300 dark:bg-gray-700 dark:hover:bg-gray-600 text-gray-700 dark:text-gray-300 px-3 py-1.5 rounded-md transition-colors flex items-center gap-1">
+                                        <i class="far fa-copy"></i> <span>Copy</span>
+                                    </button>
+                                </div>
+<pre><code class="language-python">from datetime import datetime
+import calendar
+
+now = datetime.now()
+print("Current Date and Time:", now)
+
+date1 = "10-06-2026"
+date2 = "20-06-2026"
+
+d1 = datetime.strptime(date1, "%d-%m-%Y")
+d2 = datetime.strptime(date2, "%d-%m-%Y")
+
+print("Difference between dates:", abs((d2 - d1).days), "days")
+print(calendar.month(2026, 6))</code></pre>
+                            </div>
+                        </div>
+                    </section>
+
+                </div>
+            </div>
+            
+            <footer class="text-center text-sm text-gray-500 dark:text-gray-400 mt-10 mb-6">
+                Python Programming Practical Journal - Interactive web view.
+            </footer>
+        </main>
+    </div>
+
+    <!-- Prism.js for Syntax Highlighting -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-python.min.js"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            
+            /* Theme Toggle Logic */
+            const htmlElement = document.documentElement;
+            const mobileThemeToggle = document.getElementById('mobileThemeToggle');
+            const desktopThemeToggle = document.getElementById('desktopThemeToggle');
+            
+            const getInitialTheme = () => {
+                if (localStorage.getItem('color-theme')) {
+                    return localStorage.getItem('color-theme');
+                }
+                if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+                    return 'dark';
+                }
+                return 'light';
+            };
+
+            const setTheme = (theme) => {
+                if (theme === 'dark') {
+                    htmlElement.classList.add('dark');
+                    localStorage.setItem('color-theme', 'dark');
+                } else {
+                    htmlElement.classList.remove('dark');
+                    localStorage.setItem('color-theme', 'light');
+                }
+            };
+
+            setTheme(getInitialTheme());
+
+            const toggleTheme = () => {
+                const currentTheme = htmlElement.classList.contains('dark') ? 'dark' : 'light';
+                setTheme(currentTheme === 'dark' ? 'light' : 'dark');
+            };
+
+            mobileThemeToggle.addEventListener('click', toggleTheme);
+            desktopThemeToggle.addEventListener('click', toggleTheme);
+
+
+            /* Copy to Clipboard Logic */
+            const copyButtons = document.querySelectorAll('.copy-btn');
+            
+            copyButtons.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    // Find the closest pre element, then its child code element
+                    const codeBlock = btn.parentElement.nextElementSibling.querySelector('code');
+                    
+                    if(codeBlock) {
+                        const codeText = codeBlock.innerText;
+                        
+                        // Copy to clipboard
+                        navigator.clipboard.writeText(codeText).then(() => {
+                            // Visual feedback
+                            const originalHTML = btn.innerHTML;
+                            btn.innerHTML = '<i class="fas fa-check text-green-500"></i> <span class="text-green-500 font-medium">Copied!</span>';
+                            btn.classList.add('bg-green-100', 'dark:bg-green-900/30');
+                            
+                            setTimeout(() => {
+                                btn.innerHTML = originalHTML;
+                                btn.classList.remove('bg-green-100', 'dark:bg-green-900/30');
+                            }, 2000);
+                        }).catch(err => {
+                            console.error('Failed to copy text: ', err);
+                            // Fallback using execCommand if clipboard API fails
+                            const textarea = document.createElement('textarea');
+                            textarea.value = codeText;
+                            document.body.appendChild(textarea);
+                            textarea.select();
+                            try {
+                                document.execCommand('copy');
+                                const originalHTML = btn.innerHTML;
+                                btn.innerHTML = '<i class="fas fa-check text-green-500"></i> <span class="text-green-500 font-medium">Copied!</span>';
+                                setTimeout(() => btn.innerHTML = originalHTML, 2000);
+                            } catch (e) {
+                                console.error('Fallback copy failed', e);
+                            }
+                            document.body.removeChild(textarea);
+                        });
+                    }
+                });
+            });
+
+            /* Mobile Sidebar Toggle Logic */
+            const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+            const sidebar = document.getElementById('sidebar');
+            const sidebarOverlay = document.getElementById('sidebarOverlay');
+            
+            const toggleSidebar = () => {
+                const isClosed = sidebar.classList.contains('-translate-x-full');
+                if (isClosed) {
+                    sidebar.classList.remove('-translate-x-full');
+                    sidebarOverlay.classList.remove('hidden');
+                    document.body.classList.add('overflow-hidden');
+                } else {
+                    sidebar.classList.add('-translate-x-full');
+                    sidebarOverlay.classList.add('hidden');
+                    document.body.classList.remove('overflow-hidden');
+                }
+            };
+
+            mobileMenuBtn.addEventListener('click', toggleSidebar);
+            sidebarOverlay.addEventListener('click', toggleSidebar);
+            
+            // Close sidebar when clicking a nav link on mobile
+            const navLinks = document.querySelectorAll('.nav-link');
+            navLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    if (window.innerWidth < 1024) { // lg breakpoint
+                        toggleSidebar();
+                    }
+                });
+            });
+
+            /* Active Navigation Highlighting based on Scroll */
+            const mainContent = document.querySelector('main');
+            const sections = document.querySelectorAll('section[id]');
+            
+            const updateActiveLink = () => {
+                let currentId = '';
+                // Adjust threshold slightly above middle of screen
+                const scrollPosition = mainContent.scrollTop + (mainContent.clientHeight / 3); 
+                
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop;
+                    const sectionHeight = section.offsetHeight;
+                    
+                    if (scrollPosition >= sectionTop && scrollPosition < (sectionTop + sectionHeight + 50)) {
+                        currentId = section.getAttribute('id');
+                    }
+                });
+
+                navLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href') === `#${currentId}`) {
+                        link.classList.add('active');
+                        // Optional: Scroll sidebar to active link
+                        link.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                    }
+                });
+            };
+
+            mainContent.addEventListener('scroll', updateActiveLink);
+            // Run once on load
+            setTimeout(updateActiveLink, 100);
+        });
+    </script>
+</body>
+</html>
